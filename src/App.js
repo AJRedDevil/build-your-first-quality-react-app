@@ -10,9 +10,18 @@ class App extends Component {
         {id:1, name: '1', isComplete: true},
         {id:2, name: '2', isComplete: false},
         {id:3, name: '3', isComplete: false}
-      ]
+      ],
+      currentTodo: ''
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  handleInputChange (evt) {
+    this.setState({
+      currentTodo: evt.target.value
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -22,7 +31,7 @@ class App extends Component {
         </div>
         <div className="Todo-App">
           <form>
-            <input type="text" />
+            <input type="text" onChange={this.handleInputChange} value={this.state.currentTodo}/>
           </form>
         </div>
         <div className="Todo-List">
